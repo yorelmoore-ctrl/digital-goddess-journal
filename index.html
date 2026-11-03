@@ -1,0 +1,644 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#180e27">
+<meta name="description" content="The Digital Goddess — your personal celestial sanctuary.">
+<title>The Digital Goddess ✦</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #130b20;
+  --panel: rgba(63, 39, 83, .55);
+  --panel2: rgba(91, 57, 111, .35);
+  --purple: #bd91df;
+  --pink: #e8b5d7;
+  --gold: #d9b878;
+  --text: #f7edf9;
+  --muted: #c0abc9;
+  --border: rgba(226, 190, 245, .19);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 15% 10%, #4b2866 0, transparent 38%),
+    radial-gradient(ellipse at 90% 55%, #39204f 0, transparent 40%),
+    linear-gradient(145deg, #10091a, #21112e 55%, #130b20);
+  font-family: 'DM Sans', sans-serif;
+}
+
+button, input, textarea { font: inherit; }
+
+button { cursor: pointer; }
+
+.app {
+  width: min(100%, 760px);
+  margin: auto;
+  padding: 24px 18px 110px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 23px;
+  color: var(--gold);
+  letter-spacing: 2px;
+}
+
+.small-label {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.moon {
+  font-size: 27px;
+  color: var(--gold);
+}
+
+.hero {
+  text-align: center;
+  padding: 34px 17px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(117,76,143,.35), rgba(37,22,51,.65));
+  box-shadow: 0 15px 45px rgba(0,0,0,.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero:before {
+  content: "✦     ·       ✧       ·      ✦";
+  display: block;
+  color: var(--gold);
+  letter-spacing: 9px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(43px, 12vw, 65px);
+  font-weight: 500;
+  line-height: .98;
+  margin: 0;
+  background: linear-gradient(110deg, #fff0f8, #d4a9ed, #e8c99b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 17px auto 0;
+  max-width: 290px;
+}
+
+.date {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 27px;
+  font-weight: 500;
+  margin: 30px 0 13px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 19px;
+  padding: 19px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  margin-bottom: 14px;
+}
+
+.card-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  line-height: 1.3;
+  color: #f4d9f4;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.mood-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.mood {
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  background: rgba(255,255,255,.04);
+  color: var(--muted);
+  padding: 10px 13px;
+  font-size: 12px;
+}
+
+.mood.active {
+  background: rgba(190,145,223,.25);
+  border-color: var(--purple);
+  color: white;
+}
+
+.field {
+  width: 100%;
+  background: rgba(12,7,20,.48);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  color: var(--text);
+  outline: none;
+  margin: 7px 0 15px;
+}
+
+.field:focus {
+  border-color: var(--purple);
+}
+
+textarea.field {
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.6;
+}
+
+.field::placeholder { color: #9f8ba9; }
+
+.gold-button, .secondary-button {
+  border-radius: 30px;
+  padding: 13px 18px;
+  border: 1px solid transparent;
+  width: 100%;
+  font-weight: 600;
+  margin-top: 7px;
+}
+
+.gold-button {
+  background: linear-gradient(110deg, #e2c18c, #bd91df);
+  color: #21112e;
+}
+
+.secondary-button {
+  background: rgba(255,255,255,.05);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.entry {
+  border-bottom: 1px solid var(--border);
+  padding: 13px 0;
+}
+
+.entry:last-child { border: 0; }
+
+.entry h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px;
+  margin: 0 0 5px;
+  color: #f0d8f5;
+}
+
+.entry p {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+
+.entry small { color: var(--gold); }
+
+.entry-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.entry-actions button {
+  background: transparent;
+  color: var(--pink);
+  border: 1px solid var(--border);
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+}
+
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  padding: 35px 0 10px;
+}
+
+.hidden { display: none; }
+
+.notice {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+</style>
+</head>
+
+<body>
+<main class="app">
+
+  <header class="topbar">
+    <div>
+      <div class="brand">THE DIGITAL GODDESS</div>
+      <div class="small-label">Your personal universe</div>
+    </div>
+    <div class="moon">☾</div>
+  </header>
+
+  <section class="hero">
+    <div class="date" id="today"></div>
+    <h1>Welcome,<br>Goddess.</h1>
+    <p>A sacred little corner of the universe where you get to become, create, reflect and simply exist.</p>
+  </section>
+
+  <h2 class="section-title">Your daily sanctuary ✧</h2>
+
+  <section class="card">
+    <div class="card-label">Today's affirmation</div>
+    <div class="quote" id="affirmation">
+      I am allowed to grow at my own pace. My becoming is beautiful.
+    </div>
+    <button class="secondary-button" onclick="newAffirmation()">
+      Another affirmation ✦
+    </button>
+  </section>
+
+  <section class="card">
+    <div class="card-label">Today's intention</div>
+    <input class="field" id="intention" placeholder="Today, I want to feel...">
+    <button class="gold-button" onclick="saveIntention()">
+      Save my intention
+    </button>
+    <p class="notice" id="intentionStatus"></p>
+  </section>
+
+  <h2 class="section-title">How is your energy, goddess?</h2>
+
+  <section class="card">
+    <div class="card-label">Choose your current mood</div>
+    <div class="mood-list" id="moods">
+      <button class="mood" onclick="chooseMood(this,'Peaceful')">☁️ Peaceful</button>
+      <button class="mood" onclick="chooseMood(this,'Happy')">✨ Happy</button>
+      <button class="mood" onclick="chooseMood(this,'Anxious')">🦋 Anxious</button>
+      <button class="mood" onclick="chooseMood(this,'Overwhelmed')">🌧️ Overwhelmed</button>
+      <button class="mood" onclick="chooseMood(this,'Inspired')">🌙 Inspired</button>
+      <button class="mood" onclick="chooseMood(this,'Tired')">💤 Tired</button>
+      <button class="mood" onclick="chooseMood(this,'Reflective')">🔮 Reflective</button>
+    </div>
+    <p class="notice" id="moodStatus">Your feelings are welcome here.</p>
+  </section>
+
+  <h2 class="section-title">My Grimoire 📖</h2>
+
+  <section class="card">
+    <div class="card-label">A page from your story</div>
+
+    <label class="muted" for="entryTitle">Entry title</label>
+    <input class="field" id="entryTitle" placeholder="A thought, a memory, a moment...">
+
+    <label class="muted" for="entryText">Dear diary...</label>
+    <textarea class="field" id="entryText" placeholder="Let your thoughts wander. There is no right way to write here."></textarea>
+
+    <button class="gold-button" onclick="saveEntry()">
+      Save to my Grimoire ✦
+    </button>
+    <p class="notice" id="saveStatus">Your entries are saved in this browser on this device.</p>
+  </section>
+
+  <h2 class="section-title">Your collected memories</h2>
+
+  <section class="card">
+    <div id="entries">
+      <p class="muted">Your story begins with the first page you write. ♡</p>
+    </div>
+  </section>
+
+  <h2 class="section-title">Protect your memories</h2>
+
+  <section class="card">
+    <div class="card-label">Your personal archive</div>
+    <p class="muted">Download a backup of your journal entries and intentions. Keep a copy somewhere safe.</p>
+    <button class="gold-button" onclick="exportBackup()">
+      ↓ Download my journal backup
+    </button>
+    <button class="secondary-button" onclick="document.getElementById('backupFile').click()">
+      ↑ Restore a journal backup
+    </button>
+    <input type="file" id="backupFile" accept=".json,application/json" class="hidden">
+    <p class="notice" id="backupStatus">Backups are stored wherever you choose to save them. They are not automatically uploaded.</p>
+  </section>
+
+  <footer class="footer">
+    ✧ She is becoming. She is remembering. She is enough. ✧
+    <p class="small-label">THE DIGITAL GODDESS • EST. 2026</p>
+  </footer>
+
+</main>
+
+<script>
+const KEY = "digitalGoddessJournal_v1";
+
+let data = {
+  entries: [],
+  intention: "",
+  mood: ""
+};
+
+const affirmations = [
+  "I am allowed to grow at my own pace. My becoming is beautiful.",
+  "I do not need permission to take up space.",
+  "I can be a work in progress and still be worthy.",
+  "My softness is not weakness. My boundaries are sacred.",
+  "I am more than what I have survived.",
+  "I deserve a life filled with curiosity, joy and connection.",
+  "I am allowed to rest without earning it.",
+  "There is magic in the person I am becoming."
+];
+
+function loadData() {
+  try {
+    const saved = localStorage.getItem(KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      data = {
+        entries: Array.isArray(parsed.entries) ? parsed.entries : [],
+        intention: typeof parsed.intention === "string" ? parsed.intention : "",
+        mood: typeof parsed.mood === "string" ? parsed.mood : ""
+      };
+    }
+  } catch (error) {
+    console.error("Could not load journal data.", error);
+  }
+
+  document.getElementById("intention").value = data.intention;
+  renderEntries();
+  restoreMood();
+}
+
+function persist() {
+  try {
+    localStorage.setItem(KEY, JSON.stringify(data));
+    return true;
+  } catch (error) {
+    alert("Your browser could not save this change. Please download a backup and check your available storage.");
+    return false;
+  }
+}
+
+function updateDate() {
+  const now = new Date();
+  document.getElementById("today").textContent =
+    now.toLocaleDateString(undefined, {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric"
+    });
+}
+
+function newAffirmation() {
+  const current = document.getElementById("affirmation").textContent;
+  let next = current;
+  while (next === current) {
+    next = affirmations[Math.floor(Math.random() * affirmations.length)];
+  }
+  document.getElementById("affirmation").textContent = next;
+}
+
+function saveIntention() {
+  data.intention = document.getElementById("intention").value.trim();
+  if (persist()) {
+    document.getElementById("intentionStatus").textContent =
+      "Your intention has been saved. ✨";
+  }
+}
+
+function chooseMood(button, mood) {
+  data.mood = mood;
+  if (!persist()) return;
+
+  document.querySelectorAll(".mood").forEach(item => {
+    item.classList.remove("active");
+  });
+
+  button.classList.add("active");
+  document.getElementById("moodStatus").textContent =
+    "Today's mood: " + mood + " ♡";
+}
+
+function restoreMood() {
+  document.querySelectorAll(".mood").forEach(button => {
+    button.classList.toggle(
+      "active",
+      button.textContent.includes(data.mood) && data.mood !== ""
+    );
+  });
+
+  if (data.mood) {
+    document.getElementById("moodStatus").textContent =
+      "Today's mood: " + data.mood + " ♡";
+  }
+}
+
+function saveEntry() {
+  const title = document.getElementById("entryTitle").value.trim();
+  const content = document.getElementById("entryText").value.trim();
+
+  if (!title && !content) {
+    alert("Write a little something before saving your page. ♡");
+    return;
+  }
+
+  const entry = {
+    id: Date.now().toString(),
+    title: title || "Untitled reflection",
+    content,
+    mood: data.mood,
+    date: new Date().toISOString()
+  };
+
+  data.entries.unshift(entry);
+
+  if (persist()) {
+    document.getElementById("entryTitle").value = "";
+    document.getElementById("entryText").value = "";
+    document.getElementById("saveStatus").textContent =
+      "Your page has been added to your Grimoire. ♡";
+    renderEntries();
+  } else {
+    data.entries.shift();
+  }
+}
+
+function renderEntries() {
+  const container = document.getElementById("entries");
+  container.replaceChildren();
+
+  if (!data.entries.length) {
+    const empty = document.createElement("p");
+    empty.className = "muted";
+    empty.textContent = "Your story begins with the first page you write. ♡";
+    container.appendChild(empty);
+    return;
+  }
+
+  data.entries.forEach(entry => {
+    const article = document.createElement("article");
+    article.className = "entry";
+
+    const title = document.createElement("h3");
+    title.textContent = entry.title;
+
+    const date = document.createElement("small");
+    date.textContent = new Date(entry.date).toLocaleString();
+
+    const paragraph = document.createElement("p");
+    paragraph.textContent = entry.content;
+
+    const actions = document.createElement("div");
+    actions.className = "entry-actions";
+
+    const remove = document.createElement("button");
+    remove.textContent = "Delete entry";
+    remove.addEventListener("click", () => deleteEntry(entry.id));
+
+    actions.append(remove);
+    article.append(title, date, paragraph);
+
+    if (entry.mood) {
+      const mood = document.createElement("small");
+      mood.textContent = "  ·  Mood: " + entry.mood;
+      article.appendChild(mood);
+    }
+
+    article.appendChild(actions);
+    container.appendChild(article);
+  });
+}
+
+function deleteEntry(id) {
+  if (!confirm("Delete this journal entry? This cannot be undone unless you have a backup.")) {
+    return;
+  }
+
+  data.entries = data.entries.filter(entry => entry.id !== id);
+  if (persist()) renderEntries();
+}
+
+function exportBackup() {
+  const backup = {
+    app: "The Digital Goddess",
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    data
+  };
+
+  const blob = new Blob(
+    [JSON.stringify(backup, null, 2)],
+    { type: "application/json" }
+  );
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "digital-goddess-backup-" +
+    new Date().toISOString().slice(0, 10) + ".json";
+
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+
+  document.getElementById("backupStatus").textContent =
+    "Your backup download has started. Keep it somewhere safe.";
+}
+
+document.getElementById("backupFile").addEventListener("change", async event => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  try {
+    const backup = JSON.parse(await file.text());
+
+    if (
+      backup.app !== "The Digital Goddess" ||
+      !backup.data ||
+      !Array.isArray(backup.data.entries)
+    ) {
+      throw new Error("This is not a valid Goddess Journal backup.");
+    }
+
+    if (!confirm("Restoring will replace the journal currently saved in this browser. Continue?")) {
+      event.target.value = "";
+      return;
+    }
+
+    data = {
+      entries: backup.data.entries,
+      intention: typeof backup.data.intention === "string" ? backup.data.intention : "",
+      mood: typeof backup.data.mood === "string" ? backup.data.mood : ""
+    };
+
+    if (persist()) {
+      loadData();
+      document.getElementById("backupStatus").textContent =
+        "Your journal backup has been restored. ♡";
+    }
+  } catch (error) {
+    alert("We couldn't restore that backup: " + error.message);
+  }
+
+  event.target.value = "";
+});
+
+updateDate();
+loadData();
+</script>
+
+</body>
+</html>
